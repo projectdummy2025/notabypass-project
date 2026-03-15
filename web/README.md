@@ -2,12 +2,34 @@
 
 Next.js web application untuk upload gambar transaksi, OCR processing, dan AI data cleaning.
 
-## Fitur
+## ✨ Fitur Utama
 
-- **Drag & Drop Upload**: Upload gambar receipt/transaksi dengan drag & drop atau click to browse
-- **OCR Processing**: Ekstrak teks dari gambar menggunakan OCR Worker (PaddleOCR)
-- **AI Cleaning**: Bersihkan dan strukturkan data menggunakan AI (Google Gemma via OpenRouter)
-- **Markdown Export**: Hasilkan dokumen markdown yang rapi dengan informasi transaksi
+- **🎨 Premium UI/UX**: Glassmorphism design dengan Tailwind CSS Typography
+- **📤 Drag & Drop Upload**: Upload gambar receipt/transaksi dengan drag & drop
+- **🔍 Smart OCR**: Ekstrak teks dari gambar menggunakan OCR Worker (PaddleOCR)
+- **🤖 AI Cleaning**: Bersihkan dan strukturkan data menggunakan AI (Google Gemma via OpenRouter)
+- **📄 Markdown Export**: Hasilkan dokumen markdown yang rapi dengan informasi transaksi
+- **📱 Fully Responsive**: Tampilan optimal di semua perangkat
+- **🌙 Dark Mode Support**: Mendukung mode gelap secara otomatis
+
+## 🎨 Design Features
+
+### Typography System
+- **Font**: Geist Sans & Geist Mono untuk tampilan modern dan tajam
+- **Hierarki Visual**: H1-H6 dengan styling yang jelas dan konsisten
+- **Muted Colors**: Warna teks deskripsi yang nyaman di mata
+
+### Table Styling
+- Border tipis minimalis
+- Padding yang lega untuk readability
+- Row kontras (zebra striping) untuk data transaksi
+- Hover effects untuk interaksi yang lebih baik
+
+### Visual Elements
+- **Glassmorphism**: Kontainer dengan efek kaca buram
+- **Subtle Shadows**: Bayangan halus untuk depth
+- **Gradient Accents**: Aksen gradient untuk visual yang menarik
+- **Smooth Transitions**: Animasi halus pada semua interaksi
 
 ## Setup
 
@@ -111,8 +133,11 @@ npm start
 - **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
+- **Typography**: @tailwindcss/typography
+- **Markdown**: react-markdown, remark-gfm
 - **AI**: OpenRouter API (Google Gemma 3n E2B)
 - **OCR**: External OCR Worker (FastAPI + PaddleOCR)
+- **Fonts**: Geist Sans & Geist Mono
 
 ## Project Structure
 
@@ -129,10 +154,37 @@ web/
 │   │       └── route.ts      # AI cleaning API
 │   ├── layout.tsx
 │   └── globals.css
+├── components/
+│   ├── markdown-renderer.tsx # Premium Markdown renderer component
+│   └── README.md             # Component documentation
 ├── .env.example
 ├── package.json
 └── tsconfig.json
 ```
+
+## 🎨 MarkdownRenderer Component
+
+Komponen `MarkdownRenderer` adalah custom renderer untuk menampilkan hasil transaksi dengan desain premium ala fintech.
+
+### Fitur Utama
+
+| Fitur | Deskripsi |
+|-------|-----------|
+| **Auto Numeric Alignment** | Kolom angka/harga otomatis rata kanan |
+| **Fintech Tables** | Border tipis, padding lega, hover effects |
+| **Muted Typography** | Warna zinc yang nyaman di mata |
+| **Dark Mode** | Support penuh untuk dark mode |
+| **Smart Emphasis** | Kata "Total" dll otomatis lebih dominan |
+
+### Cara Penggunaan
+
+```tsx
+import { MarkdownRenderer } from "@/components/markdown-renderer";
+
+<MarkdownRenderer content={markdown} />
+```
+
+Lihat `components/README.md` untuk dokumentasi lengkap.
 
 ## Environment Variables
 
