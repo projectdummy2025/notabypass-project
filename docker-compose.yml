@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  # Layanan Mesin OCR (Si Otot)
+  ocr-worker:
+    build: 
+      context: ./ocr-worker
+      dockerfile: Dockerfile
+    container_name: ocr_worker_container
+    # Volume: Menghubungkan folder data di laptop ke folder /app/data di dalam Docker
+    # Label :z sangat penting untuk pengguna Fedora agar tidak terkena masalah permission (SELinux)
+    volumes:
+      - ./data:/app/data:z
+    # Agar kontainer tetap menyala saat kita melakukan testing
+    tty: true
+    stdin_open: true
+    # Perintah awal untuk mengetes apakah mesin sudah siap
+    command: python --version
