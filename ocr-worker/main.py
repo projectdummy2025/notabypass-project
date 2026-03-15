@@ -20,7 +20,7 @@ def health():
     return {"status": "online", "mode": "CPU Only"}
 
 @app.post("/process")
-async def process_ocr(file: UploadFile = File(...)):
+def process_ocr(file: UploadFile = File(...)):
     if not file.content_type.startswith("image/"):
         raise HTTPException(status_code=400, detail="Hanya menerima file gambar.")
 
