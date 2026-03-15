@@ -65,7 +65,10 @@ Please provide the cleaned and structured transaction data in Markdown format. O
     }
 
     const data = await response.json();
-    const markdown = data.choices?.[0]?.message?.content || "";
+    let markdown = data.choices?.[0]?.message?.content || "";
+
+    // Bersihkan pembungkus blok kode jika ada (kotak kayu)
+    markdown = markdown.replace(/^```markdown\n?/i, "").replace(/\n?```$/i, "").trim();
 
     return NextResponse.json({ markdown });
   } catch (error) {
