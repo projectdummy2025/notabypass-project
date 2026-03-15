@@ -8,7 +8,7 @@ app = FastAPI(title="OCR Worker CPU Only")
 
 # INISIALISASI CPU ONLY
 # use_gpu=False wajib ada agar tidak mencari driver NVIDIA
-ocr = PaddleOCR(use_angle_cls=True, lang='en', use_gpu=False, show_log=False)
+ocr = PaddleOCR(use_angle_cls=True, lang='en', show_log=False)
 
 # Folder untuk simpan gambar agar sinkron dengan laptop
 UPLOAD_DIR = "data"

@@ -1,18 +1,35 @@
-version: '3.9'
+# OCR Worker Configuration
+# Build and run the OCR worker service
+# See: ./ocr-worker/README.md for details
 
 services:
   # Layanan Mesin OCR (Si Otot)
   ocr-worker:
-    build: 
+    build:
       context: ./ocr-worker
       dockerfile: Dockerfile
     container_name: ocr_worker_container
-    # Volume: Menghubungkan folder data di laptop ke folder /app/data di dalam Docker
-    # Label :z sangat penting untuk pengguna Fedora agar tidak terkena masalah permission (SELinux)
+    ports:
+      - "8000:8000"
     volumes:
       - ./data:/app/data:z
-    # Agar kontainer tetap menyala saat kita melakukan testing
+      - ./ocr-worker:/app:z
     tty: true
     stdin_open: true
-    # Perintah awal untuk mengetes apakah mesin sudah siap
-    command: python --version
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  # Web Service (Optional - for development)
+  # Uncomment to run the web UI
+  # web:
+  #   build:
+  #     context: ./web
+  #     dockerfile: Dockerfile
+  #   container_name: web_container
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - OCR_WORKER_URL=http://ocr-worker:8000
+  #     - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+  #   depends_on:
+  #     - ocr-worker
+  #   command: npm run dev
