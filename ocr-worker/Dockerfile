@@ -1,7 +1,6 @@
-# Menggunakan Python slim yang stabil
 FROM python:3.9-slim
 
-# Instal dependency sistem untuk PaddleOCR dan OpenCV
+# Dependency sistem wajib untuk OpenCV & Paddle di Linux
 RUN apt-get update && apt-get install -y \
     libgl1-mesa-glx \
     libglib2.0-0 \
@@ -10,13 +9,14 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Instal FastAPI untuk membuat endpoint API dan PaddleOCR
+# Instal library
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy seluruh file script
+# Copy semua kode
 COPY . .
 
-# Jalankan server API menggunakan Uvicorn
 EXPOSE 8000
+
+# Jalankan server
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
