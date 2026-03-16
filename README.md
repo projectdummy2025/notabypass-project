@@ -62,8 +62,6 @@ Catatan: Sesuaikan variabel lingkungan (mis. host/port, queue broker) bila diper
 - Buat issue untuk bug atau fitur baru.
 - Kirim pull request dengan deskripsi perubahan dan pengujian singkat.
 
-Jika Anda ingin saya sesuaikan README ini lagi (mis. menambahkan diagram arsitektur, contoh payload API, atau langkah deploy), beri tahu detail tambahannya.
-
 **Diagram Arsitektur (Mermaid)**
 
 ```mermaid
@@ -142,6 +140,5 @@ docker-compose up --build
 - Jalankan worker menggunakan proses supervisor / container autoscaling.
 - Jangan simpan secrets di `docker-compose.yml`; gunakan secret manager atau env vars pada runtime.
 
-Jika mau, saya bisa menambahkan diagram arsitektur yang lebih rinci, contoh request/response penuh untuk setiap endpoint, atau langkah deploy khusus ke layanan seperti Docker Swarm, Kubernetes, atau VPS.
 
 
