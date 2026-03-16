@@ -64,16 +64,14 @@ Catatan: Sesuaikan variabel lingkungan (mis. host/port, queue broker) bila diper
 
 Jika Anda ingin saya sesuaikan README ini lagi (mis. menambahkan diagram arsitektur, contoh payload API, atau langkah deploy), beri tahu detail tambahannya.
 
-**Tambahan: Diagram Arsitektur (Mermaid)**
+**Diagram Arsitektur (Mermaid)**
 
-```mermaid
 graph LR
-	UI[Web UI (Next.js)] -->|HTTP| API[API Server]
-	API -->|enqueue| Broker[(Queue Broker)]
-	Broker -->|job| Worker[OCR Worker (Python)]
-	Worker -->|store| Storage[(Results DB / Object Storage)]
-	API -->|read| Storage
-```
+    UI["Web UI (Next.js)"] -->|HTTP| API["API Server"]
+    API -->|enqueue| Broker[("Queue Broker")]
+    Broker -->|job| Worker["OCR Worker (Python)"]
+    Worker -->|store| Storage[("Results DB / Object Storage")]
+    API -->|read| Storage
 
 **Contoh payload API**
 
