@@ -66,12 +66,14 @@ Jika Anda ingin saya sesuaikan README ini lagi (mis. menambahkan diagram arsitek
 
 **Diagram Arsitektur (Mermaid)**
 
+```mermaid
 graph LR
     UI["Web UI (Next.js)"] -->|HTTP| API["API Server"]
     API -->|enqueue| Broker[("Queue Broker")]
     Broker -->|job| Worker["OCR Worker (Python)"]
     Worker -->|store| Storage[("Results DB / Object Storage")]
     API -->|read| Storage
+```
 
 **Contoh payload API**
 
